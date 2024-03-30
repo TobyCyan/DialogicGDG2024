@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://fsbub6131u7h"]
+
+[ext_resource type="Script" path="res://main/game.gd" id="1_3i61t"]
+[ext_resource type="PackedScene" uid="uid://57dem465h7ib" path="res://map/map.tscn" id="1_xva25"]
+[ext_resource type="PackedScene" uid="uid://csbdyvffevrh3" path="res://player/player.tscn" id="2_nircy"]
+[ext_resource type="PackedScene" uid="uid://cqx8buqqflmt8" path="res://main/trigger.tscn" id="4_qnrq3"]
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_3i61t")
+
+[node name="map" parent="." instance=ExtResource("1_xva25")]
+
+[node name="player" parent="." instance=ExtResource("2_nircy")]
+position = Vector2(61, 90)
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.12
+one_shot = true
+autostart = true
+
+[node name="TriggerComplete" parent="." instance=ExtResource("4_qnrq3")]
+position = Vector2(453, 367)
+dialogue_name = "receive"
+
+[node name="TriggerCollect" parent="." instance=ExtResource("4_qnrq3")]
+position = Vector2(880, 359)
+dialogue_name = "option"
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

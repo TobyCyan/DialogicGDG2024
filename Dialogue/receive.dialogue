@@ -1,0 +1,10 @@
+~ start
+
+if State.get_instance().is_grass_taken:
+	Thank you!
+	do State.get_instance().complete_grass()
+
+else:
+	Please get me my grass.
+
+=> END
